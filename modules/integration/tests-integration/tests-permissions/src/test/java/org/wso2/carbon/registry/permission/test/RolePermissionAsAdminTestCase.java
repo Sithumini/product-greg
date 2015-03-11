@@ -226,6 +226,7 @@ public class RolePermissionAsAdminTestCase extends GREGIntegrationBaseTest{
                               + "GREG" + File.separator + "resource.txt";
         DataHandler dataHandler = new DataHandler(new URL("file:///" + resourcePath));
         adminResourceAdminClient.addResource(NEW_RESOURCE_PATH, "text/plain", "", dataHandler);
+        Thread.sleep(10000L);
 
         //old permission shouldn't be reset.
         assertNotNull(nonAdminResourceAdminClient.getResource(NEW_RESOURCE_PATH));
