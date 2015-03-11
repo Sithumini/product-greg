@@ -58,6 +58,7 @@ import java.net.URL;
 import java.rmi.RemoteException;
 
 import static org.testng.Assert.*;
+import static org.testng.Assert.assertTrue;
 
 public class SymlinkToRootCollectionTestCase extends GREGIntegrationBaseTest {
 
@@ -493,7 +494,7 @@ public class SymlinkToRootCollectionTestCase extends GREGIntegrationBaseTest {
 
         searchQuery.setParameterValues(paramList);
         AdvancedSearchResultsBean result = searchAdminServiceClient.getAdvancedSearchResults(searchQuery);
-        assertNull(result.getResourceDataList(), "Life Cycle Record Found even if it is deleted");
+        assertTrue(isEmptyResourceDataList(result) , "Life Cycle Record Found even if it is deleted");
 
     }
 

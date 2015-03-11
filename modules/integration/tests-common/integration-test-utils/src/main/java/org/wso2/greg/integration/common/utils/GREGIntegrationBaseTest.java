@@ -22,6 +22,8 @@ import org.wso2.carbon.automation.engine.context.AutomationContext;
 import org.wso2.carbon.automation.engine.context.TestUserMode;
 import org.wso2.carbon.automation.engine.frameworkutils.FrameworkPathUtil;
 import org.wso2.carbon.integration.common.utils.LoginLogoutClient;
+import org.wso2.carbon.registry.search.stub.beans.xsd.AdvancedSearchResultsBean;
+import org.wso2.carbon.registry.search.stub.common.xsd.ResourceData;
 
 import javax.xml.xpath.XPathExpressionException;
 
@@ -60,6 +62,19 @@ public class GREGIntegrationBaseTest {
 
     protected String getTestArtifactLocation() {
         return FrameworkPathUtil.getSystemResourceLocation();
+    }
+
+    protected boolean isEmptyResourceDataList(AdvancedSearchResultsBean result) {
+        boolean resultEmpty = true;
+        if ((result.getResourceDataList().length > 0)) {
+            for (ResourceData data : result.getResourceDataList()) {
+                if (data != null) {
+                    resultEmpty = false;
+                    break;
+                }
+            }
+        }
+        return resultEmpty;
     }
 }
 

@@ -174,7 +174,7 @@ public class SymlinkToCollectionManagementTestCase extends GREGIntegrationBaseTe
         ArrayOfString[] paramList = paramBean.getParameterList();
         searchQuery.setParameterValues(paramList);
         AdvancedSearchResultsBean result = searchAdminServiceClient.getAdvancedSearchResults(searchQuery);
-        assertNull(result.getResourceDataList(), "Symlink Record Found even if it is deleted");
+        assertTrue(isEmptyResourceDataList(result), "Symlink Record Found even if it is deleted");
     }
 
     private String getAtomDateString(Date date) {

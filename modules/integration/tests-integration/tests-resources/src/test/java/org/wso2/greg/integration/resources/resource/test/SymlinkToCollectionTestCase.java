@@ -380,7 +380,7 @@ public class SymlinkToCollectionTestCase extends GREGIntegrationBaseTest {
         ArrayOfString[] paramList = paramBean.getParameterList();
         searchQuery.setParameterValues(paramList);
         AdvancedSearchResultsBean result = searchAdminServiceClient.getAdvancedSearchResults(searchQuery);
-        assertNull(result.getResourceDataList(), "Life Cycle Record Found even if it is deleted");
+        assertTrue(isEmptyResourceDataList(result), "Life Cycle Record Found even if it is deleted");
     }
 
     //cleanup code

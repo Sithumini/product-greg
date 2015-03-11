@@ -419,7 +419,7 @@ public class RootResourceCommunityFeaturesTestCase extends GREGIntegrationBaseTe
         searchQuery.setParameterValues(paramList);
         paramList = null;
         AdvancedSearchResultsBean result = searchAdminServiceClient.getAdvancedSearchResults(searchQuery);
-        assertNull(result.getResourceDataList(), "Life Cycle Record Found even if it is deleted");
+        assertTrue(isEmptyResourceDataList(result) , "Life Cycle Record Found even if it is deleted");
     }
 
     //cleanup code
